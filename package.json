@@ -1,0 +1,15 @@
+{
+  "name": "javascriptpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "practice.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1"
+  }
+}
