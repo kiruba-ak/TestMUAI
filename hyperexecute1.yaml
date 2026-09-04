@@ -1,0 +1,32 @@
+version: 0.1
+runson: [win, linux]   # Run on Windows + Linux
+
+matrix:
+  os: [windows, linux]
+  browser: [chrome]
+
+pre:
+  - echo "Installing dependencies..."
+  - cache restore node-modules
+  - npm install
+
+env:
+  BASE_URL: "https://www.testmuai.com"
+  GLOBAL_MESSAGE: "Welcome to TestMu AI"
+
+secrets:
+  TESTMU_API_KEY: ${{ secrets.TESTMU_API_KEY }}
+
+testSuites:
+  - name: Playwright Tests
+    run: npx playwright test --reporter=html
+
+post:
+  - echo "Collecting artifacts..."
+  - artifacts upload test-results
+  - artifacts upload playwright-report
+
+github:
+  actions:
+    enabled: true
+    workflow: .github/workflows/hyperexecute.yml
